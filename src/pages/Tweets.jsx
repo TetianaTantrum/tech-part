@@ -12,7 +12,6 @@ import { useEffect, useMemo, useState } from 'react';
 function Tweets() {
   const [tweets, setTweets] = useState([]);
   const [page, setPage] = useState(1);
-  // const [following, setFollowing] = useState([]);
   const [following, setFollowing] = useState(
     JSON.parse(localStorage.getItem('following') || '[]')
   );
@@ -82,7 +81,6 @@ function Tweets() {
         </FilterSelect>
       </FilterContainer>
       <TweetsCards
-        tweets={visibleTweets}
         tweets={visibleTweets}
         setFollowing={setFollowing}
         following={following}
