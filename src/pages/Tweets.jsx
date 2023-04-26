@@ -1,6 +1,6 @@
 import { fetchTweets } from 'components/API';
 import TweetsCards from 'components/TweetsCards/TweetsCards';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 
 function Tweets() {
@@ -16,6 +16,24 @@ function Tweets() {
   const nextPage = () => {
     setPage(prevPage => prevPage + 1);
   };
+
+  const visibleTweets = useMemo(() => {
+    let filteredTweets = [];
+
+    switch (filter) {
+      case 'follow':
+        filteredTweets = tweets.filter(tweet => !following.includes(tweet.id));
+        break;
+      case 'following':
+        filteredTweets = tweets.filter(tweet => following.includes(tweet.id));
+        break;
+      default:
+        filteredTweets = tweets;
+    }
+
+    return filteredTweets;
+  }, [filter, tweets, following]);
+
   useEffect(() => {
     if (page === 1) {
       async function getInitialTweets() {
@@ -52,7 +70,7 @@ function Tweets() {
         </FilterSelect>
       </FilterContainer>
       <TweetsCards
-        tweets={tweets}
+        tweets={visibleTweets}
         setFollowing={setFollowing}
         following={following}
       />
