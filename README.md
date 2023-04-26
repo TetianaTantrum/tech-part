@@ -11,9 +11,10 @@ updates from your favorite accounts.
    Technologies used
 	 
 React
-React Router DOM
-Styled Components
 
+React Router DOM
+
+Styled Components
 
    App structure
 	 
