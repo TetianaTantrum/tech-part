@@ -12,14 +12,17 @@ import { useEffect, useMemo, useState } from 'react';
 function Tweets() {
   const [tweets, setTweets] = useState([]);
   const [page, setPage] = useState(1);
-  const [following, setFollowing] = useState([]);
+  // const [following, setFollowing] = useState([]);
+  const [following, setFollowing] = useState(
+    JSON.parse(localStorage.getItem('following') || '[]')
+  );
   const [filter, setFilter] = useState('show all');
 
   const handleFilterChange = event => {
     setFilter(event.target.value);
   };
 
-  const nextPage = () => {
+  const onLoadMore = () => {
     setPage(prevPage => prevPage + 1);
   };
 
@@ -83,7 +86,7 @@ function Tweets() {
         setFollowing={setFollowing}
         following={following}
       />
-      <LoadMoreButton onClick={nextPage}>Load more</LoadMoreButton>
+      <LoadMoreButton onClick={onLoadMore}>Load more</LoadMoreButton>
     </div>
   );
 }
