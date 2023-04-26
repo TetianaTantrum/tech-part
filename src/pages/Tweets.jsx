@@ -13,7 +13,7 @@ function Tweets() {
   const [tweets, setTweets] = useState([]);
   const [page, setPage] = useState(1);
   const [following, setFollowing] = useState(
-    JSON.parse(localStorage.getItem('following') || [])
+    JSON.parse(localStorage.getItem('following') || '[]')
   );
   const [filter, setFilter] = useState('show all');
 
