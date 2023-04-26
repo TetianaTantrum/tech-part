@@ -83,6 +83,7 @@ function Tweets() {
       </FilterContainer>
       <TweetsCards
         tweets={visibleTweets}
+        tweets={visibleTweets}
         setFollowing={setFollowing}
         following={following}
       />
