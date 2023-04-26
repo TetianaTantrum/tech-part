@@ -13,29 +13,32 @@ function Tweets() {
     setFilter(event.target.value);
   };
 
-  const LoadMore = () => {
+  const nextPage = () => {
     setPage(prevPage => prevPage + 1);
   };
-
   useEffect(() => {
-    async function getTweets() {
-      try {
-        const tweetsList = await fetchTweets(page);
-        setTweets(prevTweets => [...prevTweets, ...tweetsList]);
-      } catch (error) {}
+    if (page === 1) {
+      async function getInitialTweets() {
+        try {
+          const tweetsList = await fetchTweets(1);
+          setTweets(tweetsList);
+        } catch (error) {}
+      }
+      getInitialTweets();
     }
-    getTweets();
   }, [page]);
 
   useEffect(() => {
-    async function getInitialTweets() {
-      try {
-        const tweetsList = await fetchTweets(1);
-        setTweets(tweetsList);
-      } catch (error) {}
+    if (page >= 2) {
+      async function getTweets() {
+        try {
+          const tweetsList = await fetchTweets(page);
+          setTweets(prevTweets => [...prevTweets, ...tweetsList]);
+        } catch (error) {}
+      }
+      getTweets();
     }
-    getInitialTweets();
-  }, []);
+  }, [page]);
 
   return (
     <div>
@@ -53,7 +56,7 @@ function Tweets() {
         setFollowing={setFollowing}
         following={following}
       />
-      <LoadMoreButton onClick={LoadMore}>Load more</LoadMoreButton>
+      <LoadMoreButton onClick={nextPage}>Load more</LoadMoreButton>
     </div>
   );
 }
