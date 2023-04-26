@@ -36,9 +36,6 @@ export const Tweet = ({ tweet, setFollowing, following }) => {
           <CardTweetImage src={tweet.avatar} alt={tweet.user} />
         </CardWrapper>
         <CardTextWrapper>
-          {/* <CardElipse>
-            <CardTweetImage src={tweet.avatar} alt={tweet.user} />
-          </CardElipse> */}
           <CardTweetCount>{tweet.tweets} tweets</CardTweetCount>
           <CardFollowCount>{numFollowers} followers</CardFollowCount>
           <CardFollowButton
