@@ -5,13 +5,7 @@ import logo from '../../images/logo.png';
 import picture from '../../images/picture.png';
 import ellipse from '../../images/ellipse.png';
 
-export const Tweet = ({
-  tweet,
-  setFollowing,
-  following,
-  follow,
-  setFollow,
-}) => {
+export const Tweet = ({ tweet, setFollowing, following }) => {
   const [followers, setFollowers] = useState(tweet.followers);
 
   const numFollowers = followers.toLocaleString('ja-JP');
@@ -19,7 +13,6 @@ export const Tweet = ({
   const handleClickFollow = arg => {
     setFollowers(PrevFollowers => PrevFollowers + arg);
   };
-  // const visibleTweets(tweet.id) {setFollow(PrevFollow => [...PrevFollow, tweet.id])};
   return (
     <>
       <CardContainer>
@@ -41,8 +34,6 @@ export const Tweet = ({
             id={tweet.id}
             setFollowing={setFollowing}
             following={following}
-            // follow={follow}
-            // setFollow={setFollow}
           />
         </CardTextWrapper>
       </CardContainer>

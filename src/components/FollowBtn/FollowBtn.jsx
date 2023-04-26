@@ -1,14 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
-const CardFollowButton = ({
-  onClick,
-  setFollowing,
-  following,
-  setFollow,
-  follow,
-  id,
-}) => {
+const CardFollowButton = ({ onClick, setFollowing, id }) => {
   const [isFollowing, setIsFollowing] = useState(
     JSON.parse(localStorage.getItem('following') || '[]').includes(id)
   );

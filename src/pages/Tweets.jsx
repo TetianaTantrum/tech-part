@@ -13,7 +13,7 @@ function Tweets() {
     setFilter(event.target.value);
   };
 
-  const nextPage = () => {
+  const LoadMore = () => {
     setPage(prevPage => prevPage + 1);
   };
 
@@ -52,10 +52,8 @@ function Tweets() {
         tweets={tweets}
         setFollowing={setFollowing}
         following={following}
-        // setFollow={setFollow}
-        // follow={follow}
       />
-      <LoadMoreButton onClick={nextPage}>Load more</LoadMoreButton>
+      <LoadMoreButton onClick={LoadMore}>Load more</LoadMoreButton>
     </div>
   );
 }

@@ -4,13 +4,7 @@ import { HiOutlineArrowNarrowLeft } from 'react-icons/hi';
 import styled from 'styled-components';
 import { useRef } from 'react';
 
-const TweetsCards = ({
-  tweets,
-  setFollowing,
-  following,
-  follow,
-  setFollow,
-}) => {
+const TweetsCards = ({ tweets, setFollowing, following }) => {
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/');
 
@@ -35,8 +29,6 @@ const TweetsCards = ({
                 tweet={tweet}
                 following={following}
                 setFollowing={setFollowing}
-                // follow={follow}
-                // setFollow={setFollow}
               />
             ))}
         </CardsList>
